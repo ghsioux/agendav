@@ -55,6 +55,7 @@ interface EventInstance
      * @return string
      */
     public function getDescription();
+    public function getColor();
 
     /**
      * Get the CLASS property of this event
@@ -139,6 +140,7 @@ interface EventInstance
      * @param string $summary
      */
     public function setSummary($summary);
+    public function setColor($color);
 
     /**
      * Set the LOCATION property for this event

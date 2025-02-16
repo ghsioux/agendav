@@ -2,25 +2,6 @@
 
 namespace AgenDAV\Event;
 
-/*
- * Copyright (C) Jorge López Pérez <jorge@adobo.org>
- *
- *  This file is part of AgenDAV.
- *
- *  AgenDAV is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  any later version.
- *
- *  AgenDAV is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with AgenDAV.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 use AgenDAV\Event;
 use AgenDAV\EventInstance;
 use AgenDAV\Event\VObjectEventInstance;
@@ -54,6 +35,9 @@ class VObjectEvent implements Event
     /** @var string */
     protected $uid;
 
+    /** @var string */
+    protected $color;
+
     /**
      * Builds a new VObjectEvent
      *
@@ -63,9 +47,14 @@ class VObjectEvent implements Event
     {
         $this->vcalendar = $vcalendar;
         $this->uid = $this->findUid();
+        $this->color = $this->extractColor();
 
+        // TODO
+        error_log("Event UID: " . $this->getUid());
+        error_log("Event Color: " . $this->getColor());
+        error_log("Event is Recurrent: " . ($this->isRecurrent() ? "Yes" : "No"));
+    
         $this->updateRecurrentStatus();
-
     }
 
     /**
@@ -87,7 +76,6 @@ class VObjectEvent implements Event
     {
         return $this->uid;
     }
-
 
     /**
      * Sets UID for this event.
@@ -112,6 +100,26 @@ class VObjectEvent implements Event
     public function getRepeatRule()
     {
         return $this->repeat_rule;
+    }
+
+    /**
+     * Gets the color property of the event
+     *
+     * @return string|null
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Sets the color property of the event
+     *
+     * @param string $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
     }
 
     /**
@@ -410,7 +418,6 @@ class VObjectEvent implements Event
      */
     protected function extractRRule()
     {
-
         $base = $this->vcalendar->getBaseComponent();
 
         if ($base === null) {
@@ -419,6 +426,27 @@ class VObjectEvent implements Event
 
         if (isset($base->RRULE)) {
             return (string) $base->RRULE;
+        }
+
+        return null;
+    }
+
+    /**
+     * Extracts the COLOR property from the main VEVENT contained in the
+     * VCALENDAR, if any.
+     *
+     * @return string|null COLOR definition, or null if not found
+     */
+    protected function extractColor()
+    {
+        $base = $this->vcalendar->getBaseComponent();
+
+        if ($base === null) {
+            return null;
+        }
+
+        if (isset($base->COLOR)) {
+            return (string) $base->COLOR;
         }
 
         return null;
@@ -540,7 +568,6 @@ class VObjectEvent implements Event
         return $vevent;
     }
 
-
     /**
      * Checks if current event is recurrent. In case it is, sets required properties
      *
@@ -559,4 +586,3 @@ class VObjectEvent implements Event
         }
     }
 }
-
