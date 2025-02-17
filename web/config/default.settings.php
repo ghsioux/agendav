@@ -124,35 +124,42 @@ $app['defaults.default_view'] = 'month';
 // Logout redirection. Optional
 $app['logout.redirection'] = '';
 
-// Calendar colors
 $app['calendar.colors'] = [
-    '03A9F4', // Light blue
-    '3F51B5', // Indigo
-    'F44336', // Red
-    'E91E63', // Pink
-    '9C27B0', // Purple
-    '673AB7', // Deep purple
+    // Light colors
+    'lightsteelblue', // Light steel blue
+    'lightblue', // Light blue
+    'lightcoral', // Light coral
+    'lightsalmon', // Light salmon
+    'lightpink', // Light pink
+    'lightseagreen', // Light sea green
+    'lightgoldenrodyellow', // Light goldenrod yellow
+    'lightcyan', // Light cyan
+    'lightgreen', // Light green
+    'lightgray', // Light gray
 
-    'B3E5FC', // Pale light blue
-    'C5CAE9', // Pale Indigo
-    'FFCDD2', // Pale red
-    'F8BBD0', // Pale pink
-    'E1BEE7', // Pale purple
-    'D1C4E9', // Pale deep purple
+    // Medium colors
+    'mediumaquamarine', // Medium aquamarine
+    'mediumorchid', // Medium orchid
+    'mediumpurple', // Medium purple
+    'mediumseagreen', // Medium sea green
+    'mediumslateblue', // Medium slate blue
+    'mediumturquoise', // Medium turquoise
+    'mediumvioletred', // Medium violet red
+    'mediumspringgreen', // Medium spring green
+    'mediumblue', // Medium blue
+    'mediumslateblue', // Medium slate blue
 
-    '4CAF50', // Green
-    'FFC107', // Yellow
-    'CDDC39', // Lime
-    'FF9800', // Orange
-    '795548', // Brown
-    '9E9E9E', // Gray
-
-    'C8E6C9', // Pale green
-    'FFF9C4', // Pale yellow
-    'F0F4C3', // Pale lime
-    'FFE0B2', // Pale orange
-    'D7CCC8', // Pale brown
-    'F5F5F5', // Pale gray
+    // Dark colors
+    'darkkhaki', // Dark khaki
+    'darkolivegreen', // Dark olive green
+    'darkorange', // Dark orange
+    'darkorchid', // Dark orchid
+    'darkseagreen', // Dark sea green
+    'darkslateblue', // Dark slate blue
+    'darkslategray', // Dark slate gray
+    'darkturquoise', // Dark turquoise
+    'darkviolet', // Dark violet
+    'darkgoldenrod', // Dark goldenrod
 ];
 
 // Additionnal authentication methods

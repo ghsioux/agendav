@@ -1121,9 +1121,7 @@ var update_calendar_list = function update_calendar_list(maskbody) {
       // Some values need to be generated
       if (calendar.color === undefined || calendar.color === null) {
         calendar.color = AgenDAVConf.default_calendar_color;
-      } else {
-        calendar.color = calendar.color.substr(0,7);
-      }
+      } 
       calendar.fg = fg_for_bg(calendar.color);
 
       var li = generate_calendar_entry(calendar);
