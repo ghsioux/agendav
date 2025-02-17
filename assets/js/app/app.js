@@ -562,6 +562,7 @@ var set_mindate = function set_mindate(mindate, datepickers) {
  * @param Object data The event data
  */
 var open_event_edit_dialog = function open_event_edit_dialog(event) {
+
   var is_new = false;
   var title = t('labels', 'editevent');
 
@@ -570,7 +571,6 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
   }
 
   // Clone original object
-  // TODO use a better approach (lodash.clone?)
   event = jQuery.extend(true, {}, event);
 
   // Deal with events not from Fullcalendar (i.e. directly from backend)
@@ -651,6 +651,12 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
   // Log to console for debugging purposes
   console.log(event);
 
+  // Set default color from calendar for new events
+  if (is_new) {
+      event.color = event.calendars[0].color;
+  }
+
+
   var button_save = {
     'text': t('labels', 'save'),
     'class': 'addicon btn-icon-event-edit',
@@ -703,8 +709,31 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
         AgenDAVRepeat.setRepeatRuleOnForm(event.rrule, $('#tabs-recurrence'));
       }
 
+      // Initialize color picker with the calendar color for new events
+      if (is_new && event.color) {
+          console
+        $('input.pick_color').val(event.color);
+        $('input.pick_color').next('.color_picker').css('background-color', event.color);
+      }
+
+      // Initialize color picker
+      $('input.pick_color').colorPicker();
+
       // Reminders
       reminders_manager();
+
+      // Add event listener to update event color based on selected calendar
+      $('#event_edit_form select[name="calendar"]').on('change', function() {
+        var selectedCalendarId = $(this).val();
+        var selectedCalendar = event.calendars.find(function(calendar) {
+          return calendar.calendar === selectedCalendarId;
+        });
+        if (selectedCalendar) {
+          event.color = selectedCalendar.color;
+          $('input.pick_color').val(event.color);
+          $('input.pick_color').next('.color_picker').css('background-color', event.color);
+        }
+      });      
     }
   });
 };
