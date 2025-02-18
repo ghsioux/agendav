@@ -125,41 +125,45 @@ $app['defaults.default_view'] = 'month';
 $app['logout.redirection'] = '';
 
 $app['calendar.colors'] = [
-    // Light colors
-    'lightsteelblue', // Light steel blue
-    'lightblue', // Light blue
-    'lightcoral', // Light coral
-    'lightsalmon', // Light salmon
-    'lightpink', // Light pink
-    'lightseagreen', // Light sea green
-    'lightgoldenrodyellow', // Light goldenrod yellow
-    'lightcyan', // Light cyan
-    'lightgreen', // Light green
-    'lightgray', // Light gray
+    // Bleus & Turquoises
+    'lightcyan',
+    'lightblue',
+    'deepskyblue',
+    'dodgerblue',
+    'royalblue',
+    'powderblue',
 
-    // Medium colors
-    'mediumaquamarine', // Medium aquamarine
-    'mediumorchid', // Medium orchid
-    'mediumpurple', // Medium purple
-    'mediumseagreen', // Medium sea green
-    'mediumslateblue', // Medium slate blue
-    'mediumturquoise', // Medium turquoise
-    'mediumvioletred', // Medium violet red
-    'mediumspringgreen', // Medium spring green
-    'mediumblue', // Medium blue
-    'mediumslateblue', // Medium slate blue
+    // Verts
+    'honeydew',
+    'mediumaquamarine',
+    'mediumseagreen',
+    'seagreen',
+    'forestgreen',
+    'limegreen',
 
-    // Dark colors
-    'darkkhaki', // Dark khaki
-    'darkolivegreen', // Dark olive green
-    'darkorange', // Dark orange
-    'darkorchid', // Dark orchid
-    'darkseagreen', // Dark sea green
-    'darkslateblue', // Dark slate blue
-    'darkslategray', // Dark slate gray
-    'darkturquoise', // Dark turquoise
-    'darkviolet', // Dark violet
-    'darkgoldenrod', // Dark goldenrod
+    // Violets & Roses
+    'lavender',
+    'thistle',
+    'mediumorchid',
+    'darkorchid',
+    'blueviolet',
+    'plum',
+
+    // Oranges & Yellows
+    'peachpuff',
+    'sandybrown',
+    'darkorange',
+    'goldenrod',
+    'darkgoldenrod',
+    'khaki',
+
+    // Rouges & Roses
+    'mistyrose',
+    'lightcoral',
+    'indianred',
+    'firebrick',
+    'tomato',
+    'salmon',
 ];
 
 // Additionnal authentication methods
