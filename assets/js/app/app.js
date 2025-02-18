@@ -711,7 +711,7 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
         // Initialize color picker with the calendar color for new events
         $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
       } else {
-        if (event.color === undefined || event.color === '') {
+        if (event.color === undefined || event.color === null || event.color === '') {
           $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
         } else {
           $('input.pick_color').next('.color_picker').css('background-color', event.color);
