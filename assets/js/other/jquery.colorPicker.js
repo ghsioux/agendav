@@ -125,12 +125,12 @@
   };
 
   resetColor = function(){
-    var defaultColor = '#FFFFFF'; // Change this to the default calendar color
-    $(selectorOwner).css("background-color", "");
-    $(selectorOwner).prev("input").val("").change();
-    
-    //close the selector
-    hideSelector();    
+      var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF'; // Use the calendar color or fallback to white
+      $(selectorOwner).css("background-color", defaultColor);
+      $(selectorOwner).prev("input").val(defaultColor).change();
+      
+      //close the selector
+      hideSelector();    
   };
   
   //public methods

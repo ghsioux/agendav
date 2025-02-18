@@ -4,5 +4,9 @@ var AgenDAVUserPrefs = {{ preferences|json_encode|raw }};
 
 function set_default_colorpicker_options() {
   $.fn.colorPicker.defaultColors = AgenDAVConf.calendar_colors;
+  $.fn.colorPicker.calendarColor = AgenDAVConf.default_calendar_color;
 }
 
+function set_colorpicker_calendar_color(color) {
+  $.fn.colorPicker.calendarColor = color;
+}
