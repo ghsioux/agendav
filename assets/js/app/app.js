@@ -654,7 +654,7 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
   // Set default color from calendar for new events
   if (is_new) {
       event.color = event.calendars[0].color;
-      set_colorpicker_calendar_color(event.calendars[0].color)
+      $.fn.colorPicker.calendarColor = event.calendars[0].color; // for reset button
   }
 
 
@@ -731,7 +731,7 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
         });
         if (selectedCalendar) {
           event.color = selectedCalendar.color;
-          set_colorpicker_calendar_color(selectedCalendar.color);
+          $.fn.colorPicker.calendarColor = selectedCalendar.color; // for reset button
           $('input.pick_color').val(event.color);
           $('input.pick_color').next('.color_picker').css('background-color', event.color);
         }
