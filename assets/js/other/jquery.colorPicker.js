@@ -67,6 +67,14 @@
 
     //add reset button
     reset_button = $("<button type='button' id='reset_color'>Reset color</button>");
+    reset_button.bind("mouseover", function(e){
+      var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF';
+      $("input#color_value").val(defaultColor);
+    });
+    reset_button.bind("mouseout", function(e){
+      var currentColor = $(selectorOwner).prev("input").val();
+      $("input#color_value").val(currentColor);
+    });    
     reset_button.bind("click", function(e){ resetColor(); });
      
     $("<div id='color_custom'></div>").append(color_field).append(reset_button).appendTo(selector);
