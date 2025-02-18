@@ -1378,15 +1378,10 @@ var reload_event_source = function reload_event_source(cal) {
 /**
  * Returns a foreground color for a given background
  */
+import { colorMapping } from './colorMapping.js';
 var fg_for_bg = function fg_for_bg(color) {
-  if (color.toLowerCase().startsWith('light')) {
-    return '#000000';
-  } else {
-    return '#ffffff';
-  }
+  return colorMapping[color] || '#000000'; // Default to black if color not found
 };
-
-
 
 /**
  * This method is called when a session has expired
