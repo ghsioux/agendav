@@ -1379,14 +1379,13 @@ var reload_event_source = function reload_event_source(cal) {
  * Returns a foreground color for a given background
  */
 var fg_for_bg = function fg_for_bg(color) {
-  var colr = parseInt(color.substr(1), 16);
-
-  var is_dark = (colr >>> 16) + // R
-    ((colr >>> 8) & 0x00ff) + // G
-    (colr & 0x0000ff) < 500; // B
-
-  return (is_dark) ? '#ffffff' : '#000000';
+  if (color.toLowerCase().startsWith('light')) {
+    return '#000000';
+  } else {
+    return '#ffffff';
+  }
 };
+
 
 
 /**
@@ -1557,12 +1556,8 @@ var event_render_callback = function event_render_callback(event, element) {
     // Set the background color of the event
     if (event.color) {
         element.css('background-color', event.color);
-    }
-
-    // Set the text color of the event
-    if (event.textColor) {
-        element.css('color', event.textColor);
-    }
+        element.css('color', fg_for_bg(event.color));
+    } 
 
   if (event.rrule !== undefined) {
     icons.push('fa-repeat');
