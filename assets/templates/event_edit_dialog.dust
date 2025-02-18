@@ -24,7 +24,7 @@
     <div role="tabpanel" class="tab-pane active" id="tabs-general">
     {>event_basic_form_part/}
     {>form_element_start for="color" label="color" /}
-    <input name="color" type="text" size="7" maxlength="7" value="{color}" class="color form-control pick_color" />
+    <input name="color" type="text" value="{color}" class="color form-control pick_color" />
     {>form_element_end/}
     </div>
 
