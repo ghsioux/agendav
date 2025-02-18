@@ -129,6 +129,9 @@
       $(selectorOwner).css("background-color", defaultColor);
       $(selectorOwner).prev("input").val(defaultColor).change();
       
+      // Update the color value input field
+      $("input#color_value").val(defaultColor);
+
       //close the selector
       hideSelector();    
   };
