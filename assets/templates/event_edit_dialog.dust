@@ -22,10 +22,10 @@
 
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="tabs-general">
-    {>event_basic_form_part/}
-    {>form_element_start for="color" label="color" /}
-    <input name="color" type="text" value="{color}" class="color form-control pick_color" />
-    {>form_element_end/}
+        {>event_basic_form_part/}
+        {>form_element_start for="color" label="color" /}
+        <input name="color" type="text" value="" class="color form-control pick_color" />
+        {>form_element_end/}
     </div>
 
     <div role="tabpanel" class="tab-pane" id="tabs-recurrence">

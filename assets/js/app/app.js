@@ -651,13 +651,6 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
   // Log to console for debugging purposes
   console.log(event);
 
-  // Set default color from calendar for new events
-  if (is_new) {
-      event.color = event.calendars[0].color;
-      $.fn.colorPicker.calendarColor = event.calendars[0].color; // for reset button
-  }
-
-
   var button_save = {
     'text': t('labels', 'save'),
     'class': 'addicon btn-icon-event-edit',
@@ -710,15 +703,15 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
         AgenDAVRepeat.setRepeatRuleOnForm(event.rrule, $('#tabs-recurrence'));
       }
 
-      // Initialize color picker with the calendar color for new events
-      if (is_new && event.color) {
-          console
-        $('input.pick_color').val(event.color);
-        $('input.pick_color').next('.color_picker').css('background-color', event.color);
-      }
-
       // Initialize color picker
       $('input.pick_color').colorPicker();
+
+      // Initialize color picker with the calendar color for new events
+      if (is_new) {
+        //$('input.pick_color').val($.fn.colorPicker.calendarColor);
+        $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
+      }
+
 
       // Reminders
       reminders_manager();
@@ -730,10 +723,9 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
           return calendar.calendar === selectedCalendarId;
         });
         if (selectedCalendar) {
-          event.color = selectedCalendar.color;
           $.fn.colorPicker.calendarColor = selectedCalendar.color; // for reset button
-          $('input.pick_color').val(event.color);
-          $('input.pick_color').next('.color_picker').css('background-color', event.color);
+          //$('input.pick_color').val($.fn.colorPicker.calendarColor);
+          $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
         }
       });      
     }
