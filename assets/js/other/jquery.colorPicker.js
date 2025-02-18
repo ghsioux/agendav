@@ -125,16 +125,16 @@
   };
 
   resetColor = function(){
-      var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF'; // Use the calendar color or fallback to white
-      $(selectorOwner).css("background-color", defaultColor);
-      $(selectorOwner).prev("input").val(defaultColor).change();
-      
-      // Update the color value input field
-      $("input#color_value").val(defaultColor);
+    var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF'; // Use the calendar color or fallback to white
+    $(selectorOwner).css("background-color", defaultColor);
+    $(selectorOwner).prev("input").val(null).change();
 
-      //close the selector
-      hideSelector();    
-  };
+    // Update the color value input field
+    $("input#color_value").val(defaultColor);
+
+    //close the selector
+    hideSelector();
+};
   
   //public methods
   $.fn.colorPicker.addColors = function(colorArray){
