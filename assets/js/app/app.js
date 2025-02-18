@@ -980,7 +980,9 @@ var calendar_modify_dialog = function calendar_modify_dialog(calendar_obj) {
     width: 500,
     pre_func: function() {
       $('input.pick_color').colorPicker();
-
+      // Remove the reset button from the color picker
+      $('#color_selector').find('#reset_color').remove();
+    
       if (AgenDAVConf.enable_calendar_sharing === true && data.is_shared !== true) {
         shares_manager();
       }
