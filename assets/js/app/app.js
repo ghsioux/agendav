@@ -1145,6 +1145,9 @@ var update_calendar_list = function update_calendar_list(maskbody) {
         own_calendars.appendChild(li[0]);
       }
 
+      // Update colorPicker calendar color
+      $.fn.colorPicker.calendarColor = calendar.color;
+
     });
 
     // No calendars?
