@@ -41,34 +41,38 @@
   buildSelector = function(){
     selector = $("<div id='color_selector'></div>");
 
-     //add color pallete
-     $.each($.fn.colorPicker.defaultColors, function(i, color){
+    //add color pallete
+    $.each($.fn.colorPicker.defaultColors, function(i, color){
       swatch = $("<div class='color_swatch'>&nbsp;</div>")
       swatch.css("background-color", color);
       swatch.bind("click", function(e){ changeColor(color) });
       swatch.bind("mouseover", function(e){ 
         $(this).css("border-color", "#598FEF"); 
         $("input#color_value").val(color);    
-        }); 
+      }); 
       swatch.bind("mouseout", function(e){ 
         $(this).css("border-color", "#000");
         $("input#color_value").val($(selectorOwner).prev("input").val());
-        });
+      });
       
-     swatch.appendTo(selector);
-     });
+      swatch.appendTo(selector);
+    });
   
-     //add color value field
-     color_field = $("<label for='color_value'>Color</label><input type='text' size='8' id='color_value'/>");
-     color_field.bind("keydown", function(event){
+    //add color value field
+    color_field = $("<label for='color_value'>Color</label><input type='text' size='8' id='color_value'/>");
+    color_field.bind("keydown", function(event){
       if(event.keyCode == 13) {changeColor($(this).val());}
       if(event.keyCode == 27) {toggleSelector()}
-     });
-     
-     $("<div id='color_custom'></div>").append(color_field).appendTo(selector);
+    });
 
-     $("body").append(selector); 
-     selector.hide();
+    //add reset button
+    reset_button = $("<button type='button' id='reset_color'>Reset color</button>");
+    reset_button.bind("click", function(e){ resetColor(); });
+     
+    $("<div id='color_custom'></div>").append(color_field).append(reset_button).appendTo(selector);
+
+    $("body").append(selector); 
+    selector.hide();
   };
   
   checkMouse = function(event){
@@ -104,7 +108,7 @@
     //bind close event handler
     $(document).bind("mousedown", checkMouse);
     selectorShowing = true 
-   }
+  }
   
   toggleSelector = function(event){
     selectorOwner = this; 
@@ -115,6 +119,15 @@
     selectedValue = value;
     $(selectorOwner).css("background-color", selectedValue);
     $(selectorOwner).prev("input").val(selectedValue).change();
+    
+    //close the selector
+    hideSelector();    
+  };
+
+  resetColor = function(){
+    var defaultColor = '#FFFFFF'; // Change this to the default calendar color
+    $(selectorOwner).css("background-color", "");
+    $(selectorOwner).prev("input").val("").change();
     
     //close the selector
     hideSelector();    
