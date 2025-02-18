@@ -1,3 +1,24 @@
+// https://www.w3schools.com/colors/colors_names.asp
+
+/*
+
+def hex_to_rgb(hex_color):
+    """Convert hex color to an RGB tuple."""
+    hex_color = hex_color.lstrip('#')
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def relative_luminance(r, g, b):
+    """Calculate the relative luminance of an RGB color."""
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+def is_dark_color(hex_color, threshold=140):
+    """Determine if a color is dark based on its relative luminance."""
+    r, g, b = hex_to_rgb(hex_color)
+    luminance = relative_luminance(r, g, b)
+    return luminance < threshold
+
+*/
+
 window.colorMapping = {
     "aliceblue": "#000000",
     "antiquewhite": "#000000",
