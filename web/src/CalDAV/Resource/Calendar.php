@@ -137,12 +137,6 @@ class Calendar
             throw new \RuntimeException('Calendar URL cannot be changed');
         }
 
-        // RGBA colors
-        if ($property === self::COLOR) {
-            $this->properties[self::COLOR] = $this->ensureRgbaColor($value);
-            return;
-        }
-
         $this->properties[$property] = $value;
     }
 
@@ -252,32 +246,6 @@ class Calendar
         }
 
         return false;
-    }
-
-    /**
-     * Modifies the provided color to make sure it has an alpha channel
-     *
-     * @param string $color
-     *
-     * @return string
-     */
-    protected function ensureRgbaColor($color)
-    {
-        // Missing alpha channel
-        if (strlen($color) === 7) {
-            return $color . 'ff';
-        }
-
-        if (strlen($color) === 4) {
-            preg_match('/#(.)(.)(.)/', $color, $matches);
-            return '#' .
-                $matches[1] . $matches[1] .
-                $matches[2] . $matches[2] .
-                $matches[3] . $matches[3] .
-                'ff';
-        }
-
-        return $color;
     }
 
 }

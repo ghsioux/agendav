@@ -1092,8 +1092,6 @@ var update_calendar_list = function update_calendar_list(maskbody) {
       // Some values need to be generated
       if (calendar.color === undefined || calendar.color === null) {
         calendar.color = AgenDAVConf.default_calendar_color;
-      } else {
-        calendar.color = calendar.color.substr(0,7);
       }
       calendar.fg = fg_for_bg(calendar.color);
 
@@ -1352,13 +1350,7 @@ var reload_event_source = function reload_event_source(cal) {
  * Returns a foreground color for a given background
  */
 var fg_for_bg = function fg_for_bg(color) {
-  var colr = parseInt(color.substr(1), 16);
-
-  var is_dark = (colr >>> 16) + // R
-    ((colr >>> 8) & 0x00ff) + // G
-    (colr & 0x0000ff) < 500; // B
-
-  return (is_dark) ? '#ffffff' : '#000000';
+  return colorMapping[color] || '#000000'; // Default to black if color not found
 };
 
 
@@ -1530,6 +1522,7 @@ var event_render_callback = function event_render_callback(event, element) {
   // Set the background color of the event
   if (event.color) {
       element.css('background-color', event.color);
+      element.css('color', fg_for_bg(event.color));
   }
 
   if (event.rrule !== undefined) {
