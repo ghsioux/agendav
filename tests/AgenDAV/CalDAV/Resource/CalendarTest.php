@@ -114,14 +114,14 @@ class CalendarTest extends TestCase
     public function testRgbaColor()
     {
         $calendar = new Calendar('/cal1');
-        $calendar->setProperty(Calendar::COLOR, '#000000aa');
-        $this->assertEquals('#000000aa', $calendar->getProperty(Calendar::COLOR));
+        $calendar->setProperty(Calendar::COLOR, 'blue');
+        $this->assertEquals('blue', $calendar->getProperty(Calendar::COLOR));
 
-        $calendar->setProperty(Calendar::COLOR, '#000000');
-        $this->assertEquals('#000000ff', $calendar->getProperty(Calendar::COLOR));
+        $calendar->setProperty(Calendar::COLOR, 'navajowhite');
+        $this->assertEquals('navajowhite', $calendar->getProperty(Calendar::COLOR));
 
-        $calendar->setProperty(Calendar::COLOR, '#012');
-        $this->assertEquals('#001122ff', $calendar->getProperty(Calendar::COLOR));
+        $calendar->setProperty(Calendar::COLOR, 'rosybrown');
+        $this->assertEquals('rosybrown', $calendar->getProperty(Calendar::COLOR));
     }
 
 }
