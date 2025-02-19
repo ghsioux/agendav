@@ -705,6 +705,8 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
 
       // Initialize color picker
       $('input.pick_color').colorPicker();
+      // Show the reset button from the color picker
+      $('#color_selector').find('#reset_color').show();
       
       if (is_new) {
         // Initialize color picker with the calendar color for new events
@@ -732,6 +734,7 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
           return calendar.calendar === selectedCalendarId;
         });
         if (selectedCalendar) {
+          $.fn.colorPicker.calendarColor = selectedCalendar.color; // for reset button
           $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
         }
       });      
@@ -982,6 +985,8 @@ var calendar_modify_dialog = function calendar_modify_dialog(calendar_obj) {
     width: 500,
     pre_func: function() {
       $('input.pick_color').colorPicker();
+      // Hide the reset button from the color picker
+      $('#color_selector').find('#reset_color').hide();
 
       if (AgenDAVConf.enable_calendar_sharing === true && data.is_shared !== true) {
         shares_manager();

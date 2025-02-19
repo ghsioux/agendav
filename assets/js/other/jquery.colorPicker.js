@@ -65,7 +65,19 @@
       if(event.keyCode == 27) {toggleSelector()}
     });
 
-    $("<div id='color_custom'></div>").append(color_field).appendTo(selector);
+    //add reset button
+    reset_button = $("<button type='button' id='reset_color'>Reset color</button>");
+    reset_button.bind("mouseover", function(e){
+      var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF';
+      $("input#color_value").val(defaultColor);
+    });
+    reset_button.bind("mouseout", function(e){
+      var currentColor = $(selectorOwner).prev("input").val();
+      $("input#color_value").val(currentColor);
+    });
+    reset_button.bind("click", function(e){ resetColor(); });
+
+    $("<div id='color_custom'></div>").append(color_field).append(reset_button).appendTo(selector);
 
     $("body").append(selector); 
     selector.hide();
@@ -118,6 +130,18 @@
     
     //close the selector
     hideSelector();    
+  };
+
+  resetColor = function(){
+    var defaultColor = $.fn.colorPicker.calendarColor || '#FFFFFF'; // Use the calendar color or fallback to white
+    $(selectorOwner).prev("input").val(null).change();
+    $(selectorOwner).css("background-color", defaultColor);
+
+    // Update the color value input field
+    $("input#color_value").val(defaultColor);
+
+    //close the selector
+    hideSelector();
   };
 
   //public methods
