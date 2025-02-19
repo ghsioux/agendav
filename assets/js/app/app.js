@@ -705,7 +705,8 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
 
       // Initialize color picker
       $('input.pick_color').colorPicker();
-
+      // Show the reset button from the color picker
+      $('#color_selector').find('#reset_color').show();
       
       if (is_new) {
         // Initialize color picker with the calendar color for new events
@@ -981,7 +982,7 @@ var calendar_modify_dialog = function calendar_modify_dialog(calendar_obj) {
     pre_func: function() {
       $('input.pick_color').colorPicker();
       // Remove the reset button from the color picker
-      $('#color_selector').find('#reset_color').remove();
+      $('#color_selector').find('#reset_color').hide();
     
       if (AgenDAVConf.enable_calendar_sharing === true && data.is_shared !== true) {
         shares_manager();
