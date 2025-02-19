@@ -41,7 +41,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: Run composer update if PHP version >= 8.0
-        if: startsWith(matrix.php-version, '8.')
+        if: startsWith(matrix.php-version, '8')
         run: composer update --no-scripts --no-progress --no-dev
         working-directory: ./web
 
