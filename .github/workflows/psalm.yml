@@ -43,8 +43,6 @@ jobs:
 
       - name: Psalm Security Scan
         uses: docker://ghcr.io/psalm/psalm-security-scan
-        env:
-          INPUT_WORKING_DIR: ./web
 
       - name: Upload Security Analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
