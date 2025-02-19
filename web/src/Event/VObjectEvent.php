@@ -47,13 +47,6 @@ class VObjectEvent implements Event
     {
         $this->vcalendar = $vcalendar;
         $this->uid = $this->findUid();
-        $this->color = $this->extractColor();
-
-        // TODO
-        error_log("Event UID: " . $this->getUid());
-        error_log("Event Color: " . $this->getColor());
-        error_log("Event is Recurrent: " . ($this->isRecurrent() ? "Yes" : "No"));
-    
         $this->updateRecurrentStatus();
     }
 
@@ -426,27 +419,6 @@ class VObjectEvent implements Event
 
         if (isset($base->RRULE)) {
             return (string) $base->RRULE;
-        }
-
-        return null;
-    }
-
-    /**
-     * Extracts the COLOR property from the main VEVENT contained in the
-     * VCALENDAR, if any.
-     *
-     * @return string|null COLOR definition, or null if not found
-     */
-    protected function extractColor()
-    {
-        $base = $this->vcalendar->getBaseComponent();
-
-        if ($base === null) {
-            return null;
-        }
-
-        if (isset($base->COLOR)) {
-            return (string) $base->COLOR;
         }
 
         return null;
