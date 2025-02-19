@@ -562,6 +562,7 @@ var set_mindate = function set_mindate(mindate, datepickers) {
  * @param Object data The event data
  */
 var open_event_edit_dialog = function open_event_edit_dialog(event) {
+
   var is_new = false;
   var title = t('labels', 'editevent');
 
@@ -570,7 +571,6 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
   }
 
   // Clone original object
-  // TODO use a better approach (lodash.clone?)
   event = jQuery.extend(true, {}, event);
 
   // Deal with events not from Fullcalendar (i.e. directly from backend)
@@ -703,8 +703,38 @@ var open_event_edit_dialog = function open_event_edit_dialog(event) {
         AgenDAVRepeat.setRepeatRuleOnForm(event.rrule, $('#tabs-recurrence'));
       }
 
+      // Initialize color picker
+      $('input.pick_color').colorPicker();
+      
+      if (is_new) {
+        // Initialize color picker with the calendar color for new events
+        $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
+      }
+      else {
+        // Event is not new but has no color,
+        // Initialize color picker with the calendar color for new events
+        if (event.color === undefined || event.color === null || event.color === '') {
+          $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
+        }
+        // Event has a color, initialize color picker with that color
+        else {
+          $('input.pick_color').next('.color_picker').css('background-color', event.color);
+        }
+      }
+
       // Reminders
       reminders_manager();
+
+      // Add event listener to update event color based on selected calendar
+      $('#event_edit_form select[name="calendar"]').on('change', function() {
+        var selectedCalendarId = $(this).val();
+        var selectedCalendar = event.calendars.find(function(calendar) {
+          return calendar.calendar === selectedCalendarId;
+        });
+        if (selectedCalendar) {
+          $('input.pick_color').next('.color_picker').css('background-color', $.fn.colorPicker.calendarColor);
+        }
+      });      
     }
   });
 };
@@ -1114,6 +1144,9 @@ var update_calendar_list = function update_calendar_list(maskbody) {
         own_calendars.appendChild(li[0]);
       }
 
+      // Update colorPicker calendar color
+      $.fn.colorPicker.calendarColor = calendar.color;
+
     });
 
     // No calendars?
@@ -1352,7 +1385,6 @@ var reload_event_source = function reload_event_source(cal) {
 var fg_for_bg = function fg_for_bg(color) {
   return colorMapping[color] || '#000000'; // Default to black if color not found
 };
-
 
 /**
  * This method is called when a session has expired
