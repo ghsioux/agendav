@@ -29,6 +29,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set safe directory
+        run: git config --global --add safe.directory /github/workspace
+  
+      - name: Install dependencies
+        run: composer install --no-scripts --no-progress --no-dev
+        working-directory: ./web
+
       - name: Psalm
         uses: docker://ghcr.io/psalm/psalm-github-actions
         with:
