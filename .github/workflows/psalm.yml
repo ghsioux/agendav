@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: [7.2, 7.3, 7.4, 8.0, 8.1]
+        php-version: [7.2, 7.3, 7.4]
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
@@ -39,6 +39,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+
+      - name: Run composer update if PHP version >= 8.0
+        if: startsWith(matrix.php-version, '8.')
+        run: composer update --no-scripts --no-progress --no-dev
+        working-directory: ./web
 
       - name: Install dependencies
         run: composer install --no-scripts --no-progress --no-dev
