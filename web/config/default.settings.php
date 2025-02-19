@@ -126,33 +126,45 @@ $app['logout.redirection'] = '';
 
 // Calendar colors
 $app['calendar.colors'] = [
-    '03A9F4', // Light blue
-    '3F51B5', // Indigo
-    'F44336', // Red
-    'E91E63', // Pink
-    '9C27B0', // Purple
-    '673AB7', // Deep purple
+    // Blues & Turquoises
+    'lightcyan',
+    'lightblue',
+    'deepskyblue',
+    'dodgerblue',
+    'royalblue',
+    'powderblue',
 
-    'B3E5FC', // Pale light blue
-    'C5CAE9', // Pale Indigo
-    'FFCDD2', // Pale red
-    'F8BBD0', // Pale pink
-    'E1BEE7', // Pale purple
-    'D1C4E9', // Pale deep purple
+    // Greens
+    'honeydew',
+    'mediumaquamarine',
+    'mediumseagreen',
+    'seagreen',
+    'forestgreen',
+    'limegreen',
 
-    '4CAF50', // Green
-    'FFC107', // Yellow
-    'CDDC39', // Lime
-    'FF9800', // Orange
-    '795548', // Brown
-    '9E9E9E', // Gray
+    // Purples & Pinks
+    'lavender',
+    'thistle',
+    'mediumorchid',
+    'darkorchid',
+    'blueviolet',
+    'plum',
 
-    'C8E6C9', // Pale green
-    'FFF9C4', // Pale yellow
-    'F0F4C3', // Pale lime
-    'FFE0B2', // Pale orange
-    'D7CCC8', // Pale brown
-    'F5F5F5', // Pale gray
+    // Oranges & Yellows
+    'peachpuff',
+    'sandybrown',
+    'darkorange',
+    'goldenrod',
+    'darkgoldenrod',
+    'khaki',
+
+    // Reds & Pinks
+    'mistyrose',
+    'lightcoral',
+    'indianred',
+    'firebrick',
+    'tomato',
+    'salmon',
 ];
 
 // Additionnal authentication methods
