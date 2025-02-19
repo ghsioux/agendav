@@ -42,7 +42,7 @@ jobs:
         working-directory: ./web
 
       - name: Psalm Security Scan
-        uses: docker://ghcr.io/psalm/psalm-security-scan:4.3.0
+        uses: docker://ghcr.io/psalm/psalm-security-scan
         env:
           INPUT_WORKING_DIR: ./web
 
