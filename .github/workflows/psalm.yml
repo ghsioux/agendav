@@ -43,9 +43,8 @@ jobs:
 
       - name: Psalm Security Scan
         uses: psalm/psalm-github-security-scan@f3e6fd9432bc3e44aec078572677ce9d2ef9c287
-        with:
-          entryPoint: bash
-          args: -c "cd web && psalm --report=results.sarif"
+        env:
+          INPUT_WORKING_DIR: ./web
 
       - name: Upload Security Analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
