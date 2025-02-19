@@ -1519,6 +1519,12 @@ var event_render_callback = function event_render_callback(event, element) {
   // Icons
   var icons = [];
 
+  // Set the background and text colors of the event
+  if (event.color) {
+      element.css('background-color', event.color);
+      element.css('color', fg_for_bg(event.color));
+  }
+
   if (event.rrule !== undefined) {
     icons.push('fa-repeat');
   }
