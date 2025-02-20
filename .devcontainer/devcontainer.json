@@ -2,8 +2,9 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/php
 {
 	"name": "PHP",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"dockerFile": "Dockerfile",
+	// use mcr.microsoft.com/devcontainers/php:8.0
+	"image": "mcr.microsoft.com/devcontainers/php:8.0",
+
 
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
