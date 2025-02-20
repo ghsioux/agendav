@@ -15,12 +15,7 @@
       },
 
     "customizations": {
-        "vscode": {
-            "extensions": [
-            "GitHub.copilot",
-            "GitHub.copilot-chat"
-            ]
-        }
+
     },
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
